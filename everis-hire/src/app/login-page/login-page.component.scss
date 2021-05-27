@@ -1,0 +1,14 @@
+.login-Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background: radial-gradient(circle at center, #66bb6a, #43a047 100%);
+}
+
+.login-card {
+    max-height: 680px;
+    max-width: 680px;
+}
+
