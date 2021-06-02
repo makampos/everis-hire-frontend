@@ -20,14 +20,29 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
+import { ProjectComponent } from './project/project.component';
+import { CandidateComponent } from './candidate/candidate.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProjectComponent,
+    CandidateComponent,
   ],
   imports: [
     CommonModule,
+    MatListModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatSidenavModule,
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
