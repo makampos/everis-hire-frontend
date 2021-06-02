@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-
+  isSideBarOpen = false;
   constructor(
     private router: Router,
   ) { }
@@ -17,6 +17,14 @@ export class DashboardComponent implements OnInit {
 
   backToLoginPage(){
     this.router.navigateByUrl('/login');
+  }
+
+  openSidebar(){
+   this.isSideBarOpen = true; 
+  }
+
+  closeSideBar(){
+    this.isSideBarOpen = false;
   }
 
 }

@@ -1,2 +1,32 @@
-<p>dashboard works!</p>
-<button mat-button (click)="backToLoginPage()">Esqueci minha senha</button>
+<div>
+    <mat-sidenav-container class="main-container">
+        <mat-sidenav #sidebarRef opened mode='side' [(opened)]='isSideBarOpen'>
+            <p style="font-weight: bold; text-align: center; margin-top: 12px;">MENU</p>
+        <mat-list>
+            <mat-list-item> 
+                <a [routerLink]="['/dashboard']" (click)="sidebarRef.toggle()">Painel</a>
+            </mat-list-item>
+            <mat-list-item> 
+                <a [routerLink]="['/candidato']" (click)="sidebarRef.toggle()">Candidato</a>
+            </mat-list-item>
+            <mat-list-item> 
+                <a [routerLink]="['/projeto']" (click)="sidebarRef.toggle()">Projeto</a>
+            </mat-list-item>          
+            <mat-list-item> 
+            <button mat-button (click)="backToLoginPage()">voltar</button>
+            </mat-list-item>
+        </mat-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+             <mat-toolbar>
+                <button mat-icon-button (click)="sidebarRef.toggle()">                    
+                    <mat-icon class="icon-color">menu</mat-icon>
+                </button>
+             </mat-toolbar>   
+             <ng-container >                
+                <router-outlet></router-outlet>                
+             </ng-container>                
+        </mat-sidenav-content>        
+    </mat-sidenav-container>    
+</div>
+

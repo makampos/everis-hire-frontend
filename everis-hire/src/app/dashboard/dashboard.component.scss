@@ -1,0 +1,22 @@
+.main-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;    
+}
+
+mat-toolbar {
+    background-image: radial-gradient(circle at center, #66bb6a, #43a047 100%)
+}
+
+mat-sidenav {
+    padding: 12px;
+    -webkit-box-shadow: 15px -19px 63px -44px rgba(0,0,0,0.94);
+    -moz-box-shadow: 15px -19px 63px -44px rgba(0,0,0,0.94);
+    box-shadow: 15px -19px 63px -44px rgba(0,0,0,0.94);
+}
+
+.icon-color {
+    color: #ffff;
+}
