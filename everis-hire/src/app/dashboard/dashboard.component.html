@@ -4,6 +4,9 @@
             <p style="font-weight: bold; text-align: center; margin-top: 12px;">MENU</p>
         <mat-list>
             <mat-list-item> 
+                <a [routerLink]="['/vaga']" (click)="sidebarRef.toggle()">vaga</a>
+            </mat-list-item>
+            <mat-list-item> 
                 <a [routerLink]="['/dashboard']" (click)="sidebarRef.toggle()">Painel</a>
             </mat-list-item>
             <mat-list-item> 
