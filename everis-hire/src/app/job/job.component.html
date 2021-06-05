@@ -3,62 +3,96 @@
         <mat-card-title>Cadastrar Vagas</mat-card-title>
         <mat-card-subtitle>Informe os dados da vaga</mat-card-subtitle>
         <mat-card-content>
-            <form>
-                <mat-form-field class="field-space">
-                  <mat-label>Tipo da Vaga</mat-label>
-                  <input matInput placeholder="" value="front-end" >
-                </mat-form-field>
-                <mat-form-field class="field-space">
-                    <mat-label>EverJob</mat-label>
-                    <input matInput placeholder="" >
-                  </mat-form-field>
-                  <mat-form-field class="field-space">
-                    <mat-label>Gerente</mat-label>
-                    <input matInput placeholder="" >
-                  </mat-form-field>
-                  <mat-form-field class="field-space">
-                    <mat-label>Ltf</mat-label>
-                    <input matInput placeholder="" >
-                  </mat-form-field> 
-                  <mat-form-field class="field-space">
-                    <mat-label>Comunidade</mat-label>
-                    <input matInput placeholder="" >
-                  </mat-form-field>
-                  <mat-form-field class="field-space">
-                    <mat-label>Tipo de Alocação</mat-label>
-                    <input matInput placeholder="" >
-                  </mat-form-field>   
-                  <mat-form-field class="field-space">
-                    <mat-label>Tecnologia</mat-label>
-                    <input matInput placeholder="" >
-                  </mat-form-field>    
-                  <mat-form-field class="field-space">
-                    <mat-label>Tempo de Experiencia</mat-label>
-                    <input matInput placeholder="" >
-                  </mat-form-field>  
-                  <mat-form-field class="field-space">
-                    <mat-label>Salário Máximo</mat-label>
-                    <input matInput placeholder="Ex. Pizza" >
-                  </mat-form-field>   
-                  <mat-form-field class="field-space">
-                    <mat-label>Prioridade</mat-label>
-                    <input matInput placeholder="" >
-                  </mat-form-field>  
-                  <mat-form-field class="field-space">
-                    <mat-label>Data da Priorização</mat-label>
-                    <input matInput placeholder="" >
-                  </mat-form-field>  
+            <form [formGroup]="jobForm" (ngSubmit)="save()">
+              <mat-form-field class="field-space">
+                <mat-label>EverJob</mat-label>
+                <input type="number" matInput placeholder="" formControlName="everJob" >
+              </mat-form-field>
+              <mat-form-field class="field-space">
+                <mat-label>Líder Centers</mat-label>
+                <input type="text" matInput placeholder="" formControlName="leaderCenters">
+              </mat-form-field>
+              <mat-form-field class="field-space">
+                <mat-label>LTF / PL</mat-label>
+                <input type="text" matInput placeholder="" formControlName="ltfOrPl">
+              </mat-form-field> 
+              <mat-form-field class="field-space">
+                <mat-label>Gerente São Paulo</mat-label>
+                <input type="text" matInput placeholder="" formControlName="managerSp">
+              </mat-form-field> 
+              <mat-form-field class="field-space">
+                <mat-label>Comunidade</mat-label>
+                <input type="text" matInput placeholder="" formControlName="community">
+              </mat-form-field>
+              <mat-form-field class="field-space">
+                <mat-label>Squad</mat-label>
+                <input matInput placeholder="" formControlName="squad">
+              </mat-form-field>  
+              <mat-form-field class="field-space">
+                <mat-label>Cod. Projeto</mat-label>
+                <input type="text" matInput placeholder="" formControlName="projectId">
+              </mat-form-field>  
+              <mat-form-field class="field-space">
+                <mat-label>Tipo de Alocação</mat-label>
+                <input type="text" matInput placeholder="" formControlName="allocationType">
+              </mat-form-field>  
+              <mat-form-field appearance="fill">
+                <mat-label>Data de Abertura</mat-label>
+                <input type="date" matInput [matDatepicker]="openingDate" formControlName="openingDate">
+                <mat-datepicker-toggle matSuffix [for]="openingDate "></mat-datepicker-toggle>
+                <mat-datepicker #openingDate></mat-datepicker>
+              </mat-form-field> 
+              <mat-form-field class="field-space">
+                <mat-label>Tecnologia</mat-label>
+                <input type="text" matInput placeholder="" formControlName="technology">
+              </mat-form-field>  
+              <mat-form-field class="field-space">
+                <mat-label>Tempo de Experiencia</mat-label>
+                <input type="number" matInput placeholder="" formControlName="yearsOfExperience">
+              </mat-form-field>   
+              <mat-form-field appearance="fill">
+                <mat-label>Data Desejada</mat-label>
+                <input type="date" matInput [matDatepicker]="desiredDate" formControlName="desiredDate">
+                <mat-datepicker-toggle matSuffix [for]="desiredDate "></mat-datepicker-toggle>
+                <mat-datepicker #desiredDate></mat-datepicker>
+              </mat-form-field>               
+              <mat-form-field class="field-space">
+                <mat-label>Salário Máximo</mat-label>
+                <input type="number" matInput placeholder="" formControlName="maximumSalary">
+              </mat-form-field>  
+              <mat-form-field appearance="fill">
+                <mat-label>Recrutadora</mat-label>
+                <mat-select formControlName="recruiter">
+                  <mat-option *ngFor="let recruiter of recruiters" [value]="recruiter.recruiterId" >
+                    {{recruiter.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>  
+              <mat-form-field appearance="fill">
+                <mat-label>Prioridade</mat-label>
+                <mat-select formControlName="priority">
+                  <mat-option *ngFor="let priority of priorities" [value]="priority.value" >
+                    {{priority.value}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>  
+              <mat-form-field appearance="fill">
+                <mat-label>Data da Prioridade</mat-label>
+                <input type="date" matInput [matDatepicker]="priorityDate" formControlName="priorityDate">
+                <mat-datepicker-toggle matSuffix [for]="priorityDate "></mat-datepicker-toggle>
+                <mat-datepicker #priorityDate></mat-datepicker>
+              </mat-form-field>                                                                
                   <mat-form-field class="field-space">
                     <mat-label>Status da Vaga</mat-label>
-                    <input matInput placeholder="" >
-                  </mat-form-field>                         
-                <mat-form-field>
-                  <mat-label>Leave a comment</mat-label>
-                  <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-                </mat-form-field>
+                    <input type="text" matInput placeholder="" formControlName="status">
+                  </mat-form-field>                                          
+                  <mat-form-field class="field-space">
+                    <mat-label>Justificativa</mat-label>
+                    <textarea type="text" matInput placeholder="" formControlName="justification"></textarea>
+                  </mat-form-field>                                       
                 <mat-card-actions fxLayout="row" fxLayoutAlign="end">
-                    <button mat-raised-button color="primary">Salvar</button>
-                </mat-card-actions>
+                    <button type="submit" mat-raised-button color="primary">Salvar</button>
+                </mat-card-actions>                
               </form>            
         </mat-card-content>
         <mat-card-footer></mat-card-footer>
