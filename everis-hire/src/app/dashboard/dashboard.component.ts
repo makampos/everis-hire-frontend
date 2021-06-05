@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AccountService } from '../_services/account.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,14 +11,13 @@ export class DashboardComponent implements OnInit {
   isSideBarOpen = false;
   constructor(
     private router: Router,
+    private accountService: AccountService
   ) { }
 
   ngOnInit(): void {
   }
 
-  backToLoginPage(){
-    this.router.navigateByUrl('/login');
-  }
+ 
 
   openSidebar(){
    this.isSideBarOpen = true; 
@@ -25,6 +25,11 @@ export class DashboardComponent implements OnInit {
 
   closeSideBar(){
     this.isSideBarOpen = false;
+  }
+
+  logout(){
+    this.accountService.logout();
+    this.router.navigateByUrl('/login');
   }
 
 }
