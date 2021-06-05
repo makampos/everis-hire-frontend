@@ -13,6 +13,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -20,12 +21,23 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import { ProjectComponent } from './project/project.component';
 import { CandidateComponent } from './candidate/candidate.component';
+import { SpinnerComponent } from './core/spinner/spinner.component';
+import { NetworkInterceptor } from './_interceptors/network.interceptor';
+import { JobComponent } from './job/job.component';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter'
+
+
+
 
 
 
@@ -36,12 +48,19 @@ import { CandidateComponent } from './candidate/candidate.component';
     DashboardComponent,
     ProjectComponent,
     CandidateComponent,
+    SpinnerComponent,
+    JobComponent,
   ],
   imports: [
     CommonModule,
+    MatDatepickerModule,
+    MatMomentDateModule,
+    MatTableModule,
+    MatSelectModule,
     MatListModule,
     MatIconModule,
     MatToolbarModule,
+    MatProgressSpinnerModule,
     MatSidenavModule,
     HttpClientModule,
     BrowserModule,
@@ -61,7 +80,9 @@ import { CandidateComponent } from './candidate/candidate.component';
     ToastrModule
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: NetworkInterceptor, multi: true},
+    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: 'pt-BR'}
   ],
   bootstrap: [AppComponent]
 })
