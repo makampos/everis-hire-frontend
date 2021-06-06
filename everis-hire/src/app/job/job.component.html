@@ -42,10 +42,16 @@
                 <mat-datepicker-toggle matSuffix [for]="openingDate "></mat-datepicker-toggle>
                 <mat-datepicker #openingDate></mat-datepicker>
               </mat-form-field> 
-              <mat-form-field class="field-space">
-                <mat-label>Tecnologia</mat-label>
-                <input type="text" matInput placeholder="" formControlName="technology">
-              </mat-form-field>  
+
+              <mat-form-field appearance="fill">
+                <mat-label>Technology</mat-label>
+                <mat-select formControlName="technology">
+                  <mat-option *ngFor="let technology of technologies" [value]="technology.technologyId" >
+                    {{technology.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
               <mat-form-field class="field-space">
                 <mat-label>Tempo de Experiencia</mat-label>
                 <input type="number" matInput placeholder="" formControlName="yearsOfExperience">
@@ -60,6 +66,7 @@
                 <mat-label>Salário Máximo</mat-label>
                 <input type="number" matInput placeholder="" formControlName="maximumSalary">
               </mat-form-field>  
+
               <mat-form-field appearance="fill">
                 <mat-label>Recrutadora</mat-label>
                 <mat-select formControlName="recruiter">
@@ -67,7 +74,8 @@
                     {{recruiter.name}}
                   </mat-option>
                 </mat-select>
-              </mat-form-field>  
+              </mat-form-field> 
+               
               <mat-form-field appearance="fill">
                 <mat-label>Prioridade</mat-label>
                 <mat-select formControlName="priority">
