@@ -16,7 +16,8 @@ export class ProjectService {
   save(project:Project) {
     return this.http.post(this.baseUrl + 'project', project).pipe(
       map((response: any) => {
-        project = response;        
+        project = response;   
+        this.toastr.success("Registro efetuado com sucesso!")     
       })
     )
   }  
