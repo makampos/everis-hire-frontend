@@ -20,10 +20,14 @@
                 <mat-label>Gerente São Paulo</mat-label>
                 <input type="text" matInput placeholder="" formControlName="managerSp">
               </mat-form-field> 
-              <mat-form-field class="field-space">
-                <mat-label>Comunidade</mat-label>
-                <input type="text" matInput placeholder="" formControlName="community">
-              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Comunidades</mat-label>
+                <mat-select formControlName="community">
+                  <mat-option *ngFor="let community of communities" [value]="community.communityId" >
+                    {{community.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> 
               <mat-form-field class="field-space">
                 <mat-label>Squad</mat-label>
                 <input matInput placeholder="" formControlName="squad">
@@ -83,8 +87,8 @@
               <mat-form-field appearance="fill">
                 <mat-label>Prioridade</mat-label>
                 <mat-select formControlName="priority">
-                  <mat-option *ngFor="let priority of priorities" [value]="priority.value" >
-                    {{priority.value}}
+                  <mat-option *ngFor="let priority of priorities" [value]="priority.priorityId" >
+                    {{priority.code}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>  
@@ -94,10 +98,14 @@
                 <mat-datepicker-toggle matSuffix [for]="priorityDate "></mat-datepicker-toggle>
                 <mat-datepicker #priorityDate></mat-datepicker>
               </mat-form-field>                                                                
-                  <mat-form-field class="field-space">
-                    <mat-label>Status da Vaga</mat-label>
-                    <input type="text" matInput placeholder="" formControlName="status">
-                  </mat-form-field>                                          
+              <mat-form-field appearance="fill">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="status">
+                  <mat-option *ngFor="let statusJob of statusJobs" [value]="statusJob.statusJobId" >
+                    {{statusJob.description}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>                                       
                   <mat-form-field class="field-space">
                     <mat-label>Justificativa</mat-label>
                     <textarea type="text" matInput placeholder="" formControlName="justification"></textarea>
