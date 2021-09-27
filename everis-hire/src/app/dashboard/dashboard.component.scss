@@ -20,3 +20,21 @@ mat-sidenav {
 .icon-color {
     color: #ffff;
 }
+
+
+mat-sidenav {
+    a {
+        margin-left: 5px;
+        color: #000;
+        font-weight: 500;
+        text-decoration: none;
+        font-size: 12px;
+    }
+   
+
+    mat-list-item:hover{
+        background-color: #F2F4F4;
+        border-radius: 5%;        
+    }
+
+}

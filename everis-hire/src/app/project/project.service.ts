@@ -4,6 +4,8 @@ import { ToastrService } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 import { Project } from '../_models/Project';
 import { map } from 'rxjs/operators';
+import { ResponseVM } from '../_models/ResponseVM';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,4 +23,17 @@ export class ProjectService {
       })
     )
   }  
+
+  getAllProject():Observable<ResponseVM<Project[]>>{
+    return this.http.get<ResponseVM<Project[]>>(this.baseUrl + 'project/all')
+    .pipe(
+      map((allprojects) => {
+        return allprojects
+      })
+    )
+  }
+
+
+  
+
 }

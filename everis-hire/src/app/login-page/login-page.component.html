@@ -1,29 +1,27 @@
 <div class="login-Container">
-    <mat-card class="login-card">
-        <mat-card-header>
-          <div mat-card-avatar class=""></div>
-          <mat-card-title>Everis</mat-card-title>
-          <mat-card-subtitle>Gestão de contratações</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image src="..." alt="Logo">
-        <mat-card-content>
+    <mat-card class="login-card">       
+        <div style="display: flex;">
+          <img mat-card-image src="../../assets/logo.png" style="width: 100%; height: auto; margin: auto;" alt="Logo">
+        </div>      
+        <mat-card-content style="margin-top: 10px;">
           <form [formGroup]="loginForm" (ngSubmit)="login()" fxLayout="column" fxLayoutAlign="center center">
             <mat-form-field appearance="legacy">
-              <mat-label>Usuario</mat-label>
-              <input formControlName="username" type="text" matInput placeholder="Usuario">                
+              <mat-label>Usuário</mat-label>
+              <input formControlName="username" type="email" matInput placeholder="Ex: nome@everis.com">                
               <mat-hint>Digite seu email</mat-hint>                
             </mat-form-field>
             <mat-form-field appearance="legacy">
               <mat-label>Senha</mat-label>
-              <input formControlName="password" type="text" matInput placeholder="Senha">                
+              <input formControlName="password" type="password" matInput placeholder="Senha">                
               <mat-hint>Digite sua senha</mat-hint>
             </mat-form-field>
             <mat-card-actions fxLayout="row" fxLayoutAlign="center center">
-              <button mat-button>Esqueci minha senha</button>
-              <button mat-button type="submit">Entrar</button>              
+              <button mat-button type="submit" class="job-button" style="color: #ffff;">ENTRAR</button>              
             </mat-card-actions>
           </form>           
-        </mat-card-content>        
+        </mat-card-content>     
       </mat-card>
 </div>
+
+
 

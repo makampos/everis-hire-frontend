@@ -21,6 +21,7 @@ import { JwtInterceptor } from './_interceptors/jwt.interceptor';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
@@ -33,7 +34,6 @@ import { CandidateComponent } from './candidate/candidate.component';
 import { SpinnerComponent } from './core/spinner/spinner.component';
 import { NetworkInterceptor } from './_interceptors/network.interceptor';
 import { JobComponent } from './job/job.component';
-import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter'
 
 
@@ -53,6 +53,7 @@ import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/m
   ],
   imports: [
     CommonModule,
+    MatPaginatorModule,
     MatDatepickerModule,
     MatMomentDateModule,
     MatTableModule,
@@ -73,7 +74,7 @@ import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/m
     MatInputModule,
     ReactiveFormsModule,
     ToastrModule.forRoot({
-      positionClass: 'toast-top-right',
+      positionClass: 'toast-bottom-right',
     })
   ],
   exports: [

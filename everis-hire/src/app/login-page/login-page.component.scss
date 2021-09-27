@@ -5,10 +5,28 @@
     height: 100%;
     width: 100%;
     background: radial-gradient(circle at center, #66bb6a, #43a047 100%);
+    
 }
 
 .login-card {
-    max-height: 680px;
-    max-width: 680px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 380px;
+    width: 380px;
+
+    -webkit-box-shadow: 15px -19px 63px -44px rgba(0,0,0,0.94);
+    -moz-box-shadow: 15px -19px 63px -44px rgba(0,0,0,0.94);
+    box-shadow: 15px -19px 63px -44px rgba(0,0,0,0.94);
 }
+
+.job-button {
+    background-color: #66bb6a;
+    width: 170px;    
+}
+
+
+
+
 

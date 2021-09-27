@@ -2,21 +2,24 @@
     <mat-sidenav-container class="main-container">
         <mat-sidenav #sidebarRef opened mode='side' [(opened)]='isSideBarOpen'>
             <p style="font-weight: bold; text-align: center; margin-top: 12px;">MENU</p>
+            <hr>
         <mat-list>
             <mat-list-item> 
-                <a [routerLink]="['/vaga']" (click)="sidebarRef.toggle()">vaga</a>
+                <mat-icon>description</mat-icon>
+                <a [routerLink]="['/vaga']" (click)="sidebarRef.toggle()">VAGA</a>                
             </mat-list-item>
             <mat-list-item> 
-                <a [routerLink]="['/dashboard']" (click)="sidebarRef.toggle()">Painel</a>
+                <mat-icon>dashboard</mat-icon>
+                <a [routerLink]="['/dashboard']" (click)="sidebarRef.toggle()">PAINEL</a>
             </mat-list-item>
-            <mat-list-item> 
+            <!-- <mat-list-item> 
                 <a [routerLink]="['/candidato']" (click)="sidebarRef.toggle()">Candidato</a>
-            </mat-list-item>
-            <mat-list-item> 
+            </mat-list-item> -->
+            <!-- <mat-list-item> 
                 <a [routerLink]="['/projeto']" (click)="sidebarRef.toggle()">Projeto</a>
-            </mat-list-item>          
+            </mat-list-item>           -->
             <mat-list-item> 
-            <button mat-button (click)="logout()">Sair</button>
+            <button mat-raised-button color="primary" (click)="logout()"><mat-icon>exit_to_app</mat-icon></button>            
             </mat-list-item>
         </mat-list>
         </mat-sidenav>
@@ -28,8 +31,8 @@
              </mat-toolbar>   
              <ng-container >                
                 <router-outlet></router-outlet>                
-             </ng-container>                
-        </mat-sidenav-content>        
-    </mat-sidenav-container>    
+             </ng-container>                                 
+        </mat-sidenav-content>      
+    </mat-sidenav-container>        
 </div>
 

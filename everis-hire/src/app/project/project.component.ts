@@ -23,15 +23,15 @@ export class ProjectComponent implements OnInit {
     description:['']
   })
 
-  save(){
-    const project:Project = {
-      name: this.projectForm.value.name,
-      description: this.projectForm.value.description
-    }
-    this.projectService.save(project).subscribe(response => {
+  // save(){
+  //   const project:Project = {
+  //     name: this.projectForm.value.name,
+  //     description: this.projectForm.value.description
+  //   }
+  //   this.projectService.save(project).subscribe(response => {
      
-    }, error => {
-      this.toastr.error(error.error)
-    })    
-  }
+  //   }, error => {
+  //     this.toastr.error(error.error)
+  //   })    
+  // }
 }
