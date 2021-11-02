@@ -46,4 +46,27 @@ export class JobService {
         map((response: ResponseVM<IJob>) => response.data))        
     )    
   }
+
+  editJob(job: IJob): Observable<ResponseVM<IJob>>{
+    return this.http
+    .put<ResponseVM<IJob>>(this.baseUrl + 'job', job)
+      .pipe(        
+        tap(() => {
+          this.refreshNeeds$.next();
+        },
+        map((response: ResponseVM<IJob>) => response.data))        
+    )    
+  }
+
+  deleteJob(jobId: number): Observable<ResponseVM<IJob>> {
+    return this.http
+      .delete<ResponseVM<IJob>>(this.baseUrl + 'job' + '/' + jobId)
+      .pipe(
+        tap(()  => {
+         this.refreshNeeds$.next(); 
+        }, 
+        map((response: ResponseVM<IJob>) => response.data))
+      )
+  }
+
 }

@@ -34,7 +34,14 @@ import { CandidateComponent } from './candidate/candidate.component';
 import { SpinnerComponent } from './core/spinner/spinner.component';
 import { NetworkInterceptor } from './_interceptors/network.interceptor';
 import { JobComponent } from './job/job.component';
-import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter'
+import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
+import { MatDialogModule } from '@angular/material/dialog';
+import { GenericDialogComponent } from './job/generic-dialog/generic-dialog.component';
+import { JobTableComponent } from './job/job-table/job-table.component';
+import { JobRegisterComponent } from './job/job-register/job-register.component';
+import { ConfirmDialogComponent } from './job/confirm-dialog/confirm-dialog.component';
+
+
 
 
 
@@ -49,7 +56,11 @@ import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/m
     ProjectComponent,
     CandidateComponent,
     SpinnerComponent,
-    JobComponent,
+    JobComponent,  
+    GenericDialogComponent,
+    JobTableComponent,
+    JobRegisterComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     CommonModule,
@@ -73,6 +84,7 @@ import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/m
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatDialogModule, 
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right',
     })

@@ -1,4 +1,6 @@
 export interface IJob {
+        forEach(arg0: (element: any) => void): number;
+        row: any;
         JobId: string 
         EverJob: number,       
         LeaderCenters: string, 

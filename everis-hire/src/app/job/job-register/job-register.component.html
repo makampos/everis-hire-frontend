@@ -1,0 +1,141 @@
+<div class="container">
+    <mat-card>
+        <mat-card-title> {{ titleDescription}} </mat-card-title>
+        <mat-card-subtitle>{{ subtitleDescription }}</mat-card-subtitle>
+        <mat-card-content>
+            <form [formGroup]="jobForm" (ngSubmit)="save()">
+              <mat-form-field class="field-space">
+                <mat-label>EverJob</mat-label>
+                <input type="number" matInput placeholder="" formControlName="everJob">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Líder Centers</mat-label>
+                <mat-select formControlName="leaderCenters">
+                  <mat-option *ngFor="let leaderCenters of leadersCenters" [value]="leaderCenters.name">
+                    {{leaderCenters.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> 
+              <mat-form-field appearance="fill">
+                <mat-label>LTF/PL</mat-label>
+                <mat-select formControlName="ltfOrPl">
+                  <mat-option *ngFor="let ltf of ltfs" [value]="ltf.name">
+                    {{ltf.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> 
+              <mat-form-field appearance="fill">
+                <mat-label>Gerente São Paulo</mat-label>
+                <mat-select formControlName="managerSp">
+                  <mat-option *ngFor="let managerSp of managersSp" [value]="managerSp.name">
+                    {{managerSp.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> 
+              <mat-form-field appearance="fill">
+                <mat-label>Comunidades</mat-label>
+                <mat-select formControlName="community">
+                  <mat-option *ngFor="let community of communities" [value]="community.name" >
+                    {{community.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> 
+              <mat-form-field appearance="fill">
+                <mat-label>Squad/Projeto</mat-label>
+                <mat-select formControlName="squad">
+                  <mat-option *ngFor="let squad of squads" [value]="squad.name" >
+                    {{squad.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> 
+              <mat-form-field appearance="fill">
+                <mat-label>Projeto</mat-label>
+                <mat-select formControlName="projectId">
+                  <mat-option *ngFor="let project of projects" [value]="project.projectId">
+                    {{project.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>           
+              <mat-form-field class="field-space">
+                <mat-label>Tipo de Alocação</mat-label>
+                <input type="text" matInput placeholder="" formControlName="allocationType">
+              </mat-form-field>  
+              <mat-form-field appearance="fill">
+                <mat-label>Data de Abertura</mat-label>
+                <input matInput [matDatepicker]="openingDate" formControlName="openingDate">
+                <mat-datepicker-toggle matSuffix [for]="openingDate "></mat-datepicker-toggle>
+                <mat-datepicker #openingDate></mat-datepicker>
+              </mat-form-field> 
+
+              <mat-form-field appearance="fill">
+                <mat-label>Technology</mat-label>
+                <mat-select formControlName="technology">
+                  <mat-option *ngFor="let technology of technologies" [value]="technology.name" >
+                    {{technology.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Tempo de Experiencia</mat-label>
+                <mat-select formControlName="yearsOfExperience">
+                  <mat-option *ngFor="let yearsOfExperience of yearsOfExperiences" [value]="yearsOfExperience.yearsOfExperienceId" >
+                    {{yearsOfExperience.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>  
+              <mat-form-field appearance="fill">
+                <mat-label>Data Desejada</mat-label>
+                <input matInput [matDatepicker]="desiredDate" formControlName="desiredDate">
+                <mat-datepicker-toggle matSuffix [for]="desiredDate "></mat-datepicker-toggle>
+                <mat-datepicker #desiredDate></mat-datepicker>
+              </mat-form-field>               
+              <mat-form-field class="field-space">
+                <mat-label>Salário Máximo</mat-label>
+                <input type="number" matInput placeholder="" formControlName="maximumSalary">
+              </mat-form-field>  
+
+              <mat-form-field appearance="fill">
+                <mat-label>Recrutadora</mat-label>
+                <mat-select formControlName="recruiter">
+                  <mat-option *ngFor="let recruiter of recruiters" [value]="recruiter.name" >
+                    {{recruiter.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> 
+               
+              <mat-form-field appearance="fill">
+                <mat-label>Prioridade</mat-label>
+                <mat-select formControlName="priority">
+                  <mat-option *ngFor="let priority of priorities" [value]="priority.code" >
+                    {{priority.code}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>  
+              <mat-form-field appearance="fill">
+                <mat-label>Data da Prioridade</mat-label>
+                <input matInput [matDatepicker]="priorityDate" formControlName="priorityDate">
+                <mat-datepicker-toggle matSuffix [for]="priorityDate "></mat-datepicker-toggle>
+                <mat-datepicker #priorityDate></mat-datepicker>
+              </mat-form-field>                                                                
+              <mat-form-field appearance="fill">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="status">
+                  <mat-option *ngFor="let statusJob of statusJobs" [value]="statusJob.description" >
+                    {{statusJob.description}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>                                       
+                  <mat-form-field class="field-space">
+                    <mat-label>Justificativa</mat-label>
+                    <textarea type="text" matInput placeholder="" formControlName="justification"></textarea>
+                  </mat-form-field>                                       
+                <mat-card-actions fxLayout="row" fxLayoutAlign="end">
+                    <button type="submit" mat-raised-button color="primary">Salvar</button>
+                </mat-card-actions>                
+              </form>            
+        </mat-card-content>
+        <mat-card-footer></mat-card-footer>
+    </mat-card>
+    
+</div>
