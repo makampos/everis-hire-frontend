@@ -1,0 +1,79 @@
+<div class="container">
+    <mat-card>
+        <mat-card-title> {{ candidateTitleDescription }}</mat-card-title>
+        <mat-card-subtitle> {{ candidateSubtitleDescription }} </mat-card-subtitle>
+        <mat-card-content>
+            <form [formGroup]="candidateForm" (ngSubmit)="save()">              
+              <mat-form-field appearance="fill">
+                <mat-label>Nome completo</mat-label>                
+                    <input type="text" matInput placeholder="Nome completo" formControlName="name">                
+              </mat-form-field> 
+              <mat-form-field appearance="fill">
+                <mat-label>Status</mat-label>
+                <mat-select formControlName="statusCandidateId" #status>
+                  <mat-option *ngFor="let statusCandidate of statusCandidates" [value]="statusCandidate.statusCandidateId" >
+                    {{statusCandidate.description}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> 
+              
+              <mat-form-field appearance="fill">
+                <mat-label>Tipo de Alocação</mat-label>
+                <mat-select formControlName="allocationTypeId">
+                  <mat-option *ngFor="let allocationType of allocationTypes" [value]="allocationType.allocationTypeId" >
+                    {{allocationType.description}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> 
+              <mat-form-field appearance="fill">
+                <mat-label>Tempo de experiência</mat-label>
+                <input type="number" matInput placeholder="Tempo de experiência" formControlName="yearsOfExperience"> 
+              </mat-form-field> 
+              <mat-form-field appearance="fill">
+                <mat-label>Quem indicou?</mat-label>
+                <input type="text" matInput placeholder="Quem indicou?" formControlName="whoIndicated"> 
+              </mat-form-field> 
+              <mat-form-field appearance="fill">
+                <mat-label>Pretensão salárial</mat-label>
+                <input type="number" matInput placeholder="Pretensão salárial" formControlName="salaryClaim"> 
+              </mat-form-field>           
+              <mat-form-field class="field-space">
+                <mat-label>Cidade</mat-label>
+                <input type="text" matInput placeholder="Cidade" formControlName="city">
+              </mat-form-field> 
+              <mat-form-field appearance="fill">
+                <mat-label>Tecnologia</mat-label>
+                <mat-select formControlName="technology">
+                  <mat-option *ngFor="let technology of technologies" [value]="technology.name" >
+                    {{technology.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>               
+              <mat-form-field appearance="fill">
+                <mat-label>Líder Centers</mat-label>
+                <mat-select formControlName="leaderCenters">
+                  <mat-option *ngFor="let leaderCenters of leaderCenters" [value]="leaderCenters.name">
+                    {{leaderCenters.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> 
+              <mat-form-field appearance="fill">
+                <mat-label>Recrutadora</mat-label>
+                <mat-select formControlName="recruiter">
+                  <mat-option *ngFor="let recruiter of recruiters" [value]="recruiter.name" >
+                    {{recruiter.name}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field> 
+              <mat-form-field class="field-space">
+                <mat-label>Resumo</mat-label>
+                <textarea type="text" matInput placeholder="Resumo" formControlName="resume"></textarea>
+              </mat-form-field>                                      
+                <mat-card-actions fxLayout="row" fxLayoutAlign="end">
+                    <button type="submit" mat-raised-button color="primary">Salvar</button>
+                </mat-card-actions>                
+              </form>            
+        </mat-card-content>
+        <mat-card-footer></mat-card-footer>
+    </mat-card>
+</div>

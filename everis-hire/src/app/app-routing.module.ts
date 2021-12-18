@@ -2,6 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CandidateComponent } from './candidate/candidate.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { InterviewComponent } from './interview/interview.component';
 import { JobComponent } from './job/job.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { ProjectComponent } from './project/project.component';
@@ -18,6 +19,9 @@ const routes: Routes = [
     },
     {
       path: 'vaga', component: JobComponent
+    },
+    {
+      path: 'entrevista', component: InterviewComponent
     }
     
   ]  

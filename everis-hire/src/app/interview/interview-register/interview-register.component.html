@@ -1,0 +1,177 @@
+  <mat-card>
+    <mat-card-title> {{ titleDescription }}</mat-card-title>
+    <mat-card-subtitle> {{ subtitleDescription }} </mat-card-subtitle>
+  <mat-stepper  #stepper >
+    <mat-step [stepControl]="interviewCandidateFormGroup" label="Dados do candidato" >
+      <form [formGroup]="interviewCandidateFormGroup">
+        <mat-form-field appearance="fill">
+          <mat-label>Nome do Candidato</mat-label>
+          <mat-select formControlName="candidateName" required #selected (selectionChange)='getCandidateOnOptionsSelected(selected.value)'>
+              <mat-option *ngFor="let candidate of candidates" [value]="candidate.candidateId">
+                {{ candidate.name}}
+              </mat-option>
+          </mat-select>
+        </mat-form-field>       
+        <mat-form-field appearance="fill">
+          <mat-label>Tipo de alocação</mat-label>
+          <input matInput placeholder="Tipo de alocação" formControlName="allocationTypeDescription" required readonly>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Cidade</mat-label>
+          <input matInput placeholder="Cidade" formControlName="city" required readonly disable>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Recrutador do candidato</mat-label>
+          <input matInput placeholder="Nome recrutadora candidato" formControlName="recruiterName" required readonly disable>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Tecnologia</mat-label>
+          <input matInput placeholder="Tecnologia" formControlName="technology" required readonly disable>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Tempo Experiência do Candidato</mat-label>
+          <input matInput placeholder="Tempo Experiência do Candidato" formControlName="yearsOfExperience" required readonly disable>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Data de criação do Cadastro</mat-label>
+          <input matInput placeholder="Data de criação do Cadastro" formControlName="createdDate"   required readonly disable>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Status do Candidato</mat-label>
+          <input matInput placeholder="Status do Candidato" formControlName="statusDescription" required readonly disable>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Pretensão Salarial</mat-label>
+          <input matInput placeholder="Pretensão Salarial" formControlName="salaryClaim" required readonly disable>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Líder Centers</mat-label>
+          <input matInput placeholder="Líder Centers" formControlName="leaderCenters" required readonly disable>
+        </mat-form-field>
+                   
+        <div fxLayout="row" fxLayoutAlign="end end"> 
+          <button mat-button matStepperNext>
+            <mat-icon>arrow_forward_ios</mat-icon>
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="interviewJobFormGroup" label="Dados da vaga">
+      <form [formGroup]="interviewJobFormGroup">
+        <mat-form-field appearance="fill">
+          <mat-label>Código Everjob</mat-label>
+          <mat-select formControlName="everJob" required #isSelected (selectionChange)='getJobOnOptionsSelected(isSelected.value)'>
+            <mat-option *ngFor="let everjob of everjobs" [value]="everjob">
+              {{ everjob.everJob }}              
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Recrutador da Vaga</mat-label>
+          <input matInput  placeholder="Recrutador da Vaga" required formControlName="jobRecruiterName" required readonly disable>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Tecnologia da Vaga</mat-label>
+          <input matInput placeholder="Tecnologia da Vaga" formControlName="jobTechnology" required required readonly disable>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Tempo Experiência Vaga</mat-label>
+          <input matInput placeholder="Tempo Experiência Vaga" formControlName="jobYearsOfExperience" required required readonly disable>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Salario Máximo</mat-label>
+          <input matInput placeholder="Salario Máximo" formControlName="maximumSalary" required required readonly disable>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>LTF/PL</mat-label>
+          <input matInput placeholder="LTF/PL" formControlName="ltfOrPl" required required readonly disable>
+        </mat-form-field>  
+        <mat-form-field appearance="fill">
+          <mat-label>Gerente SP</mat-label>
+          <input matInput placeholder="Gerente SP" formControlName="managerSp" required readonly disable>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Comunidade</mat-label>
+          <input matInput placeholder="Comunidade" formControlName="community" required readonly disable>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Projeto</mat-label>
+          <input matInput placeholder="Projeto" formControlName="projectId" required readonly disable>
+        </mat-form-field>  
+        <div fxLayout="row" fxLayoutAlign="end end">
+          <button mat-button matStepperPrevious>
+            <mat-icon>arrow_back_ios</mat-icon>
+          </button>
+          <button mat-button matStepperNext>
+            <mat-icon>arrow_forward_ios</mat-icon>
+          </button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="interviewFormGroup" label="Dados da entrevista">
+        <form [formGroup]="interviewFormGroup">
+          <mat-form-field appearance="fill">
+            <mat-label>Data Entrevista</mat-label>
+                <input matInput [matDatepicker]="dateInterView" formControlName="dateInterView">
+                <mat-datepicker-toggle matSuffix [for]="dateInterView "></mat-datepicker-toggle>
+            <mat-datepicker #dateInterView></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Data Disponível</mat-label>
+                <input matInput [matDatepicker]="availableDate" formControlName="availableDate">
+                <mat-datepicker-toggle matSuffix [for]="availableDate "></mat-datepicker-toggle>
+            <mat-datepicker #availableDate></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Entrevistador Líder Centers</mat-label>
+              <mat-select formControlName="interviewerLeaderCenters">
+                <mat-option *ngFor="let leaderCenters of leaderCenters" [value]="leaderCenters.name">
+                  {{leaderCenters.name}}
+                </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Entrevistador Técnico</mat-label>
+            <input matInput placeholder="Entrevistador Técnico" formControlName="technicalInterviewer" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Proposta</mat-label>
+            <input type="number" matInput placeholder="Proposta" formControlName="offer" required>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Status da Entrevista</mat-label>
+            <mat-select formControlName="statusInterviewId">
+              <mat-option *ngFor="let statusInterview of statusInterviews" [value]="statusInterview.statusInterviewId">
+                {{statusInterview.description}}
+              </mat-option>
+          </mat-select>
+          </mat-form-field>
+          <!-- <mat-form-field appearance="fill">
+            <mat-label>Candidato</mat-label>
+            <input matInput placeholder="Candidato" formControlName="candidateId" required>
+          </mat-form-field> -->
+          <!-- <mat-form-field appearance="fill">
+            <mat-label>Id da Vaga</mat-label>
+            <input matInput  placeholder="Id da Vaga" formControlName="jobId" required>
+          </mat-form-field>           -->
+          <div fxLayout="row" fxLayoutAlign="end end">
+            <button mat-button matStepperPrevious>
+              <mat-icon>arrow_back_ios</mat-icon>
+            </button>
+            <button mat-button matStepperNext>
+              <mat-icon>arrow_forward_ios</mat-icon>
+            </button>
+          </div>
+        </form>
+      </mat-step>
+    <mat-step label="Concluir">      
+      <div fxLayout="row" fxLayoutAlign="end end">
+        <button mat-button matStepperPrevious>
+          <mat-icon>arrow_back_ios</mat-icon>
+        </button>
+        <button mat-button (click)="stepper.reset()">Resetar</button>
+        <button mat-raised-button color="primary" (click)="submit()" >Salvar</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</mat-card>

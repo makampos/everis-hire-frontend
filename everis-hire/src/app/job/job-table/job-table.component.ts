@@ -31,8 +31,8 @@ export class JobTableComponent implements OnInit, AfterViewInit {
      'managerSp',
      'community',
      'squad',
-     'projectId',
-     'allocationType',
+     'projectDescription',
+     'allocationTypeDescription',
      'openingDate',
      'technology',
      'yearsOfExperience',
@@ -41,14 +41,14 @@ export class JobTableComponent implements OnInit, AfterViewInit {
      'recruiter',
      'priority',
      'priorityDate',
-     'status',
+     'statusDescription',
      'justification',
      'actions'
     ];
 
     
   ngAfterViewInit(): void {
-    Promise.resolve().then(()=> this.getAllJobs())
+    Promise.resolve().then(()=> this.getAllJobs());
   }
 
   ngOnInit(): void {
@@ -59,7 +59,6 @@ export class JobTableComponent implements OnInit, AfterViewInit {
 
   getAllJobs(){
     this.jobService.getAllJob().subscribe((response:ResponseVM<IJob[]>) => {
-      console.log(response);
       this.jobs = response;
       this.JobDataSource = this.jobs;       
       this.JobDataSource = new MatTableDataSource(this.jobs);

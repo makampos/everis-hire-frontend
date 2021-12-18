@@ -18,7 +18,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './_interceptors/jwt.interceptor';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -40,12 +40,15 @@ import { GenericDialogComponent } from './job/generic-dialog/generic-dialog.comp
 import { JobTableComponent } from './job/job-table/job-table.component';
 import { JobRegisterComponent } from './job/job-register/job-register.component';
 import { ConfirmDialogComponent } from './job/confirm-dialog/confirm-dialog.component';
-
-
-
-
-
-
+import { CandidateTableComponent } from './candidate/candidate-table/candidate-table.component';
+import { CandidateRegisterComponent } from './candidate/candidate-register/candidate-register.component';
+import { CandidateDialogComponent } from './candidate/candidate-dialog/candidate-dialog.component';
+import { ConfirmToDeleteCandidateComponent } from './candidate/confirmToDeleteCandidate/confirmToDeleteCandidate.component';
+import { InterviewComponent } from './interview/interview.component';
+import { InterviewRegisterComponent } from './interview/interview-register/interview-register.component';
+import { InterviewTableComponent } from './interview/interview-table/interview-table.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import { EditInterviewDialogComponent } from './interview/edit-interview-dialog/edit-interview-dialog.component';
 
 
 @NgModule({
@@ -60,9 +63,18 @@ import { ConfirmDialogComponent } from './job/confirm-dialog/confirm-dialog.comp
     GenericDialogComponent,
     JobTableComponent,
     JobRegisterComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    CandidateTableComponent,
+    CandidateRegisterComponent,
+    CandidateDialogComponent,
+    ConfirmToDeleteCandidateComponent,
+    InterviewComponent,
+    InterviewRegisterComponent,
+    InterviewTableComponent,
+    EditInterviewDialogComponent
   ],
   imports: [
+    MatStepperModule,
     CommonModule,
     MatPaginatorModule,
     MatDatepickerModule,
@@ -95,7 +107,8 @@ import { ConfirmDialogComponent } from './job/confirm-dialog/confirm-dialog.comp
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: NetworkInterceptor, multi: true},
-    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: 'pt-BR'}
+    {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: 'pt-BR'},
+    {provide: DatePipe}
   ],
   bootstrap: [AppComponent]
 })

@@ -1,23 +1,25 @@
 <div>
     <mat-sidenav-container class="main-container">
         <mat-sidenav #sidebarRef opened mode='side' [(opened)]='isSideBarOpen'>
-            <p style="font-weight: bold; text-align: center; margin-top: 12px;">MENU</p>
+            <p style="font-weight: bold; text-align: center; margin-top: 12px;">Menu</p>
             <hr>
         <mat-list>
+            <mat-list-item>
+                <mat-icon>dashboard</mat-icon>
+                <a [routerLink]="['/dashboard']" (click)="sidebarRef.toggle()">Painel</a>                
+            </mat-list-item>
             <mat-list-item> 
                 <mat-icon>description</mat-icon>
-                <a [routerLink]="['/vaga']" (click)="sidebarRef.toggle()">VAGA</a>                
-            </mat-list-item>
-            <mat-list-item> 
-                <mat-icon>dashboard</mat-icon>
-                <a [routerLink]="['/dashboard']" (click)="sidebarRef.toggle()">PAINEL</a>
-            </mat-list-item>
-            <!-- <mat-list-item> 
+                <a [routerLink]="['/vaga']" (click)="sidebarRef.toggle()">Vaga</a>                
+            </mat-list-item>            
+            <mat-list-item>
+                <mat-icon>assignment_ind</mat-icon>
                 <a [routerLink]="['/candidato']" (click)="sidebarRef.toggle()">Candidato</a>
-            </mat-list-item> -->
-            <!-- <mat-list-item> 
-                <a [routerLink]="['/projeto']" (click)="sidebarRef.toggle()">Projeto</a>
-            </mat-list-item>           -->
+            </mat-list-item>
+            <mat-list-item>
+                <mat-icon>supervised_user_circle</mat-icon>
+                <a [routerLink]="['/entrevista']" (click)="sidebarRef.toggle()">Entrevista</a>
+            </mat-list-item>          
             <mat-list-item> 
             <button mat-raised-button color="primary" (click)="logout()"><mat-icon>exit_to_app</mat-icon></button>            
             </mat-list-item>
@@ -30,9 +32,10 @@
                 </button>
              </mat-toolbar>   
              <ng-container >                
-                <router-outlet></router-outlet>                
-             </ng-container>                                 
-        </mat-sidenav-content>      
-    </mat-sidenav-container>        
+                <router-outlet></router-outlet>                              
+             </ng-container>                                             
+        </mat-sidenav-content>   
+    </mat-sidenav-container>
 </div>
+
 

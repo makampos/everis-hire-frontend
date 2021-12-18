@@ -1,6 +1,6 @@
 <div class="container">
     <mat-card>
-        <mat-card-title> {{ titleDescription}} </mat-card-title>
+        <mat-card-title> {{ titleDescription }} </mat-card-title>
         <mat-card-subtitle>{{ subtitleDescription }}</mat-card-subtitle>
         <mat-card-content>
             <form [formGroup]="jobForm" (ngSubmit)="save()">
@@ -56,10 +56,14 @@
                   </mat-option>
                 </mat-select>
               </mat-form-field>           
-              <mat-form-field class="field-space">
+              <mat-form-field appearance="fill">
                 <mat-label>Tipo de Alocação</mat-label>
-                <input type="text" matInput placeholder="" formControlName="allocationType">
-              </mat-form-field>  
+                <mat-select formControlName="allocationTypeId">
+                  <mat-option *ngFor="let allocationType of allocationTypes" [value]="allocationType.allocationTypeId">
+                    {{ allocationType.description }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>   
               <mat-form-field appearance="fill">
                 <mat-label>Data de Abertura</mat-label>
                 <input matInput [matDatepicker]="openingDate" formControlName="openingDate">
@@ -68,21 +72,16 @@
               </mat-form-field> 
 
               <mat-form-field appearance="fill">
-                <mat-label>Technology</mat-label>
+                <mat-label>Tecnologia</mat-label>
                 <mat-select formControlName="technology">
                   <mat-option *ngFor="let technology of technologies" [value]="technology.name" >
                     {{technology.name}}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
-
               <mat-form-field appearance="fill">
-                <mat-label>Tempo de Experiencia</mat-label>
-                <mat-select formControlName="yearsOfExperience">
-                  <mat-option *ngFor="let yearsOfExperience of yearsOfExperiences" [value]="yearsOfExperience.yearsOfExperienceId" >
-                    {{yearsOfExperience.viewValue}}
-                  </mat-option>
-                </mat-select>
+                <mat-label>Tempo de experiência</mat-label>
+                <input type="number" matInput placeholder="Tempo de experiência" formControlName="yearsOfExperience"> 
               </mat-form-field>  
               <mat-form-field appearance="fill">
                 <mat-label>Data Desejada</mat-label>
@@ -120,8 +119,8 @@
               </mat-form-field>                                                                
               <mat-form-field appearance="fill">
                 <mat-label>Status</mat-label>
-                <mat-select formControlName="status">
-                  <mat-option *ngFor="let statusJob of statusJobs" [value]="statusJob.description" >
+                <mat-select formControlName="statusJobId">
+                  <mat-option *ngFor="let statusJob of statusJobs" [value]="statusJob.statusJobId" >
                     {{statusJob.description}}
                   </mat-option>
                 </mat-select>

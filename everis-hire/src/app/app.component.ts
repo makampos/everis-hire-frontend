@@ -10,6 +10,7 @@ import { AccountService } from './_services/account.service';
 })
 export class AppComponent implements OnInit {
 
+
   loading$ = this.loader.loading$;
   // user: any;
   constructor(private loader: SpinnerService,

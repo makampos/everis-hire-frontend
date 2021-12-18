@@ -3,6 +3,7 @@ import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@
 import { FormBuilder } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ProjectService } from 'src/app/project/project.service';
+import { IAllocationType } from 'src/app/_models/IAllocationType';
 import { ICommunity } from 'src/app/_models/ICommunity';
 import { ILeaderCenters } from 'src/app/_models/ILeaderCenters';
 import { ILtf } from 'src/app/_models/ILtf';
@@ -15,6 +16,7 @@ import { ITechnology } from 'src/app/_models/ITechnology';
 import { IYearsOfExperience } from 'src/app/_models/IYearsOfExperience';
 import { Project } from 'src/app/_models/Project';
 import { ResponseVM } from 'src/app/_models/ResponseVM';
+import { AllocationTypeService } from 'src/app/_services/allocationType.service';
 import { CommunityService } from 'src/app/_services/community.service';
 import { LeaderCentersService } from 'src/app/_services/leader-centers.service';
 import { LtfService } from 'src/app/_services/ltf.service';
@@ -44,6 +46,7 @@ export class JobRegisterComponent implements OnInit, AfterViewInit {
   technologies: any = [];
   yearsOfExperiences: any = [];
   statusJobs: any = [];
+  allocationTypes: any = [];
   communities: any = [];
   priorities: any = [];
   managersSp: any = [];
@@ -54,8 +57,7 @@ export class JobRegisterComponent implements OnInit, AfterViewInit {
  
   
 
-  constructor(private fb: FormBuilder,
-              
+  constructor(private fb: FormBuilder,              
     private recruiterService: RecruiterService,
     private technologyService: TechnologyService,
     private yearsOfExperienceService: YearsOfExperienceService,
@@ -68,7 +70,8 @@ export class JobRegisterComponent implements OnInit, AfterViewInit {
     private leaderCenters: LeaderCentersService,
     private projectService: ProjectService,
     private toastr: ToastrService,              
-    private jobService: JobService
+    private jobService: JobService,
+    private allocationTypeService: AllocationTypeService
     ) { }  
 
   ngOnInit(): void {
@@ -89,7 +92,7 @@ export class JobRegisterComponent implements OnInit, AfterViewInit {
     community: [''],
     squad: [''],
     projectId: [''],
-    allocationType: [''],
+    allocationTypeId: [''],
     openingDate: [''],
     technology: [''],
     yearsOfExperience: [''],
@@ -98,7 +101,7 @@ export class JobRegisterComponent implements OnInit, AfterViewInit {
     recruiter: [''],
     priority: [''],
     priorityDate: [''],
-    status: [''],
+    statusJobId: [''],
     justification: [''],
   })
 
@@ -107,13 +110,12 @@ export class JobRegisterComponent implements OnInit, AfterViewInit {
   save(){
     let job = <IJob>{}
     Object.assign(job,this.jobForm.value);
-
     if(!this.fromModal) {
       this.jobService.postJob(job).subscribe((response:ResponseVM<IJob>) => {            
         this.toastr.success('Registro efetuado com sucesso!')
         this.jobForm.reset();
       }, error => {
-        this.toastr.error(error.errors,"Não foi possível salvar o formulário")    
+        this.toastr.error("Não foi possível salvar o formulário")    
       })
     } else {
       this.jobService.editJob(job).subscribe((response:ResponseVM<IJob>) => {
@@ -130,7 +132,7 @@ export class JobRegisterComponent implements OnInit, AfterViewInit {
 
   populateComboBox(){
     this.getAllTechnologies();
-    this.getRecruiters();
+    this.getAllRecruiters();
     this.getAllYearsOfExperiences();    
     this.getAllStatusJobs();
     this.getAllCommunities();
@@ -140,10 +142,11 @@ export class JobRegisterComponent implements OnInit, AfterViewInit {
     this.getAllSquads();
     this.getAllLeadersCenters();
     this.getAllProjects();
+    this.getAllAllocationType();
   }
 
 
-  getRecruiters(){
+  getAllRecruiters(){
     this.recruiterService.getAllRecruiter().subscribe((response:ResponseVM<IRecruiter[]>) => {
       if(response){        
         this.recruiters = response;
@@ -180,6 +183,16 @@ export class JobRegisterComponent implements OnInit, AfterViewInit {
       }
     }, error => {
       this.toastr.error("Não foi possível obter a lista de status da vaga");      
+    })
+  }
+
+  getAllAllocationType(){
+    this.allocationTypeService.getAllAllocationType().subscribe((response:ResponseVM<IAllocationType[]>) => {
+      if(response){
+        this.allocationTypes = response;
+      }
+    }, error => {
+      this.toastr.error("Não foi possível obter a lista de tipo de alocação");      
     })
   }
 
@@ -263,7 +276,7 @@ export class JobRegisterComponent implements OnInit, AfterViewInit {
         community: value.row.community,
         squad: value.row.squad,
         projectId: value.row.projectId,
-        allocationType: value.row.allocationType,
+        allocationTypeId: value.row.allocationType,
         openingDate: value.row.openingDate,
         technology: value.row.technology,
         yearsOfExperience: value.row.yearsOfExperience,
@@ -272,7 +285,7 @@ export class JobRegisterComponent implements OnInit, AfterViewInit {
         recruiter: value.row.recruiter,
         priority: value.row.priority,
         priorityDate: value.row.priorityDate,
-        status: value.row.status,
+        statusJobId: value.row.status,
         justification: value.row.justification
       })
     }

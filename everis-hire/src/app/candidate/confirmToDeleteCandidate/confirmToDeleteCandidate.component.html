@@ -1,0 +1,7 @@
+<div class="container" fxLayout="column" fxLayoutAlign="center">
+  <h3 fxLayoutAlign="center">Você tem certeza que gostaria de deletar o candidato {{ name }} ?</h3>
+  <mat-card-actions fxLayout="row" fxLayoutAlign="center">       
+      <button  mat-raised-button color="warn" (click)="onConfirmClick()">Sim</button>
+      <button type="submit" mat-raised-button color="primary" (click)="onCancelClick()">Não</button>
+  </mat-card-actions>  
+</div>

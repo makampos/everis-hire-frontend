@@ -20,4 +20,6 @@ export interface IJob {
         PriorityDate: Date, 
         Status: string, 
         Justification: string,
+        projectDescription: string,
+        allocationTypeDescription: string
 }

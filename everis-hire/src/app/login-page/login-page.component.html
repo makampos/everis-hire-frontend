@@ -6,14 +6,10 @@
         <mat-card-content style="margin-top: 10px;">
           <form [formGroup]="loginForm" (ngSubmit)="login()" fxLayout="column" fxLayoutAlign="center center">
             <mat-form-field appearance="legacy">
-              <mat-label>Usuário</mat-label>
-              <input formControlName="username" type="email" matInput placeholder="Ex: nome@everis.com">                
-              <mat-hint>Digite seu email</mat-hint>                
+              <input formControlName="username" type="email" matInput placeholder="Seu usuário">                                         
             </mat-form-field>
             <mat-form-field appearance="legacy">
-              <mat-label>Senha</mat-label>
               <input formControlName="password" type="password" matInput placeholder="Senha">                
-              <mat-hint>Digite sua senha</mat-hint>
             </mat-form-field>
             <mat-card-actions fxLayout="row" fxLayoutAlign="center center">
               <button mat-button type="submit" class="job-button" style="color: #ffff;">ENTRAR</button>              

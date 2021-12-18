@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { ICandidate } from '../_models/ICandidate';
 
 @Component({
   selector: 'app-candidate',
@@ -11,5 +13,4 @@ export class CandidateComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
